@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Styles */
+body {
+  height: 100vh;
+
+  background-color: #141414;
+  color: white;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Netflix Font */
+  text-align: center; /* Center all content */
+  margin: 0;
+  background-image: 
+    linear-gradient(to right, #b5050e, transparent 25%, transparent 75%, #e50914);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+/* Paragraph Layout */
+.paragraph {
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.paragraph > p {
+  flex: 1 1 50%;
+  text-align: left;
+  padding: 0.5rem;
+  margin: 0;
+}
+
+.paragraph > p:first-child {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Navbar Logo Styling */
+.navbar-logo {
+  height: 50px; /* Make logo smaller */
+}
+
+/* Button Styling */
+button {
+  transition: all 0.3s ease-in-out;
+  display: inline-block;
+  background: rgb(191, 0, 10); /* Slightly transparent red */
+  color: white;
+  padding: 14px 20px; /* Increased size */
+  border-radius: 6px;
+  text-transform: uppercase;
+  font-weight: bold;
+  width: 100%; /* Make buttons full-width like a bar */
+  max-width: 250px;
+  margin: 12px auto;
+  text-decoration: none; /* Prevent purple links */
+}
+button:hover {
+  opacity: 0.8;
+  background: rgba(229, 9, 20, 0.8); /* Even more transparent on hover */
+}
+
+/* Prevent visited links from changing color */
+a {
+  color: white;
+  text-decoration: none;
+}
+a:visited {
+  color: white;
+}
+
+/* Input Fields */
+input, select {
+  background: #333;
+  border: 1px solid #555;
+  padding: 10px;
+  color: white;
+  width: 50%;
+  border-radius: 4px;
+}
+input:focus, select:focus {
+  border-color: #e50914;
+  outline: none;
+}
+
+input::placeholder {
+  color: #ffffff87;
+}
+/* Movie Grid - 3x3 Matrix */
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(150px, 1fr)); /* Fixed 3 columns */
+  grid-template-rows: repeat(3, auto); /* Fixed 3 rows */
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  max-width: 1000px;
+  margin: 20px auto;
+}
+
+/* Movie Container */
+.movie-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+/* Movie Poster Styling */
+.movie-poster {
+  width: 100%; /* Make responsive */
+  height: 250px; /* Ensure uniform height */
+  object-fit: cover; /* Prevent distortion */
+  border-radius: 6px; /* Smooth corners */
+  transition: transform 0.3s ease-in-out;
+}
+
+.movie-poster:hover {
+  transform: scale(1.05);
+}
+
+/* Movie Title Overlay */
+.movie-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+/* Payment Method Icons */
+.payment-icon {
+  width: 120px;  /* Increased from 100px */
+  height: 90px; /* Increased from 70px */
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.payment-icon:hover {
+  transform: scale(1.1);
+}
+
+.payment-icon.selected {
+  border: 2px solid #e50914;
+  border-radius: 8px;
+  padding: 5px;
+}
+
+.subscription-container {
+  max-width: 1400px; /* Increase width to fit all plans */
+  margin: auto;
+}
+
+ul {
+  list-style: none; /* Removes bullet points */
+  padding: 0;
+}
+
+/* Subscription Plans Centering */
+.subscription-plans-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.subscription-plans-container table {
+  margin: 0 auto;
+}
+
+/* Login Form Styling */
+.login-form {
+  width: 60%;
+  max-width: 42rem; /* 672px */
+  min-width: 300px;
+  margin: 1rem auto;
+}
+
+.login-form input,
+.login-form button {
+  width: 100%;
+  margin-top: 0.5rem;
+}
