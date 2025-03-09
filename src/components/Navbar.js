@@ -7,8 +7,8 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gray-900 p-4 text-white flex justify-between items-center">
-      <Link to="/">
-        <img src="/logo.png" alt="StreamFlix Logo" className="h-6 navbar-logo" />
+      <Link to="/home">
+        <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="StreamFlix Logo" className="h-6 navbar-logo" />
       </Link>
       <div className="flex space-x-6"> {/* Added space between buttons */}
         {user ? (

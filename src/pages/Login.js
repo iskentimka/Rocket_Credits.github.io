@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
@@ -7,18 +9,17 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login } = useAuth(); // assuming login function is exposed
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = login(email, password);
+      const response = await login(email, password);
       if (response.success) {
-        // Check if user is admin
         if (email.toLowerCase() === 'admin@example.com') {
           navigate("/admin");
         } else {
-          navigate("/subscribe");
+          navigate("/home");
         }
       } else {
         setError(response.message || "Invalid credentials. Please try again.");
@@ -29,30 +30,17 @@ const Login = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 flex flex-col items-center"> {/* Center the form */}
+    <div className="container mx-auto p-4 flex flex-col items-center">
       <h2 className="text-2xl font-bold text-center">Login</h2>
-      
-      {/* Subscription information message */}
-      <div className="bg-gray-800 p-4 rounded-lg mt-4 mb-4 max-w-md text-center border-l-4 border-green-500">
-        <h3 className="text-lg font-semibold mb-2">Want to subscribe to our service?</h3>
-        <p className="text-gray-300">
-          You need to be logged in to purchase a subscription. Please login or create an account to continue.
-        </p>
-      </div>
-      
-      {error && (
-        <div className="bg-red-800 p-4 rounded-lg mt-2 mb-4 max-w-md text-center border-l-4 border-red-500">
-          <p className="text-white">{error}</p>
-        </div>
-      )}
-      
-      <form onSubmit={handleLogin} className="login-form">
+      {error && <p className="text-red-500">{error}</p>}
+      <form onSubmit={handleLogin} className="mt-4 flex flex-col space-y-4">
         <input
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+          className="p-2 border rounded"
         />
         <input
           type="password"
@@ -60,17 +48,15 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          className="p-2 border rounded"
         />
-        <button
-          type="submit"
-          className="bg-red-600"
-        >
+        <button type="submit" className="bg-red-600 text-white px-4 py-2 rounded">
           Login
         </button>
       </form>
       <p className="text-center mt-2">
         Don't have an account?{" "}
-        <a href="/signup" className="text-blue-600">Sign Up</a>
+        <Link to="/signup" className="text-blue-600">Sign Up</Link>
       </p>
     </div>
   );

@@ -65,9 +65,9 @@ const Subscription = () => {
 
       {/* Payment Method Icons */}
       <div className="flex justify-center gap-10 mt-6">
-        <img src="/images/card.png" alt="Credit Card" className="payment-icon card" />
-        <img src="/images/paypal.png" alt="PayPal" className="payment-icon paypal" />
-        <img src="/images/rocket.png" alt="Rocket Credits" className="payment-icon rocket" />
+        <img src={`${process.env.PUBLIC_URL}/images/card.png`} alt="Credit Card" className="payment-icon card" />
+        <img src={`${process.env.PUBLIC_URL}/images/paypal.png`} alt="PayPal" className="payment-icon paypal" />
+        <img src={`${process.env.PUBLIC_URL}/images/rocket.png`} alt="Rocket Credits" className="payment-icon rocket" />
       </div>
     </div>
   );

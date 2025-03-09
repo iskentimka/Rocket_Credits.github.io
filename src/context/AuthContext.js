@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Create Auth Context
 const AuthContext = createContext();
@@ -14,7 +15,7 @@ const BAD_USERS = [
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null); // Stores logged-in user
   const [badUsers, setBadUsers] = useState(BAD_USERS); // List of bad users
-
+  const navigate = useNavigate();
   // Check for existing session on component mount
   useEffect(() => {
     const storedUser = localStorage.getItem('currentUser');
@@ -34,10 +35,6 @@ export const AuthProvider = ({ children }) => {
   // Signup Function
   const signup = (email, password) => {
     try {
-      // Check if email is in bad users list
-      if (badUsers.includes(email.toLowerCase())) {
-        return { success: false, message: "This email is not allowed to register." };
-      }
 
       // Get existing users or initialize empty array
       const users = JSON.parse(localStorage.getItem('users') || '[]');
@@ -110,7 +107,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setUser(null);
     localStorage.removeItem('currentUser');
-    window.location.href = "/login";
+    navigate("/login");
   };
 
   // Update User Profile

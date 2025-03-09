@@ -80,7 +80,7 @@ const Payment = () => {
         }
 
         // After loading, check if user is bad and show error
-        if (userData && userData.status === 'bad') {
+        if (userData && userData.status === 'bad' || userData && userData.email === 'baduser@example.com') {
           setError("We apologize, but we cannot provide Rocket Credits at this time due to your payment history. Please try another payment method.");
           setIsLoading(false);
           window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -297,19 +297,19 @@ const Payment = () => {
       
       <div className="flex justify-center gap-10 mt-4"> {/* Payment images layout */}
         <img 
-          src="/images/card.png" 
+          src={`${process.env.PUBLIC_URL}/images/card.png`} 
           alt="Credit Card" 
           className={`payment-icon ${method === "card" ? "selected" : ""}`} 
           onClick={() => { setMethod("card"); setError(""); }} 
         />
         <img 
-          src="/images/paypal.png" 
+          src={`${process.env.PUBLIC_URL}/images/paypal.png`} 
           alt="PayPal" 
           className={`payment-icon ${method === "paypal" ? "selected" : ""}`} 
           onClick={() => { setMethod("paypal"); setError(""); }} 
         />
         <img 
-          src="/images/rocket.png" 
+          src={`${process.env.PUBLIC_URL}/images/rocket.png`} 
           alt="Rocket Credits"
           className={`payment-icon ${method === "rocket" ? "selected" : ""}`} 
           onClick={handleRocketSelect} 
