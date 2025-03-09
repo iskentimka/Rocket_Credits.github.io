@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/Rocket_Credits.github.io/static/css/main.3fe867a2.css",
-    "main.js": "/Rocket_Credits.github.io/static/js/main.ebf3b5be.js",
-    "index.html": "/Rocket_Credits.github.io/index.html",
-    "main.3fe867a2.css.map": "/Rocket_Credits.github.io/static/css/main.3fe867a2.css.map",
-    "main.ebf3b5be.js.map": "/Rocket_Credits.github.io/static/js/main.ebf3b5be.js.map"
+    "main.css": "/rocket-credits/static/css/main.3fe867a2.css",
+    "main.js": "/rocket-credits/static/js/main.ebf3b5be.js",
+    "index.html": "/rocket-credits/index.html",
+    "main.3fe867a2.css.map": "/rocket-credits/static/css/main.3fe867a2.css.map",
+    "main.ebf3b5be.js.map": "/rocket-credits/static/js/main.ebf3b5be.js.map"
   },
   "entrypoints": [
     "static/css/main.3fe867a2.css",
