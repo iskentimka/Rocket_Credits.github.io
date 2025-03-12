@@ -188,7 +188,7 @@ const Payment = () => {
     // Calculate return amount: shorter period = higher return percentage
     let returnPercentage = 0;
     if (diffDays <= 30) {
-      returnPercentage = 1.3; 
+      returnPercentage = 1.1; 
     } else if (diffDays <= 60) {
       returnPercentage = 1.5;
     } else if (diffDays <= 90) {
