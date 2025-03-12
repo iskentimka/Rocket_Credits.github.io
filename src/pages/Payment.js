@@ -29,7 +29,7 @@ const Payment = () => {
   const navigate = useNavigate();
 
   // Calculate monthly installment amount
-  const monthlyInstallment = (planDetails.price * 1.3 / installmentPeriod).toFixed(2);
+  const monthlyInstallment = (planDetails.price * (installmentPeriod > 3 ? 1.4 : 1.2) / installmentPeriod).toFixed(2);
 
   // Check if user can use Rocket Credits
   useEffect(() => {
@@ -80,7 +80,7 @@ const Payment = () => {
         }
 
         // After loading, check if user is bad and show error
-        if (userData && userData.status === 'bad' || userData && userData.email === 'baduser@example.com') {
+        if (userData && userData.status === 'bad' || (userData && userData.email === 'baduser@example.com')) {
           setError("We apologize, but we cannot provide Rocket Credits at this time due to your payment history. Please try another payment method.");
           setIsLoading(false);
           window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -188,13 +188,13 @@ const Payment = () => {
     // Calculate return amount: shorter period = higher return percentage
     let returnPercentage = 0;
     if (diffDays <= 30) {
-      returnPercentage = 1.1; // 90% return if within 30 days
+      returnPercentage = 1.3; 
     } else if (diffDays <= 60) {
-      returnPercentage = 1.3; // 70% return if within 60 days
+      returnPercentage = 1.5;
     } else if (diffDays <= 90) {
-      returnPercentage = 1.5; // 50% return if within 90 days
+      returnPercentage = 1.7;
     } else {
-      returnPercentage = 1.7; // 30% return if more than 90 days
+      returnPercentage = 2.0;
     }
     
     setReturnAmount((planDetails.price * returnPercentage).toFixed(2));
